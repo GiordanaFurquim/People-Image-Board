@@ -8,7 +8,7 @@ if (process.env.DATABASE_URL) {
     db = spicedPg(`postgres:${dbuser}:${dbpass}@localhost:5432/image_board`);
 }
 
-////// EXPORTS IMAGES AND FILES///////////
+/// EXPORTS FILES ///
 
 exports.getImages = function() {
     return db.query(`SELECT id, url, username, title, description
@@ -43,7 +43,7 @@ exports.getSingleImage = function(id) {
         });
 };
 
-////// EXPORTS COMMENTS///////////
+/// EXPORTS COMMENTS ///
 
 exports.addComments = function(comment, username, image_id) {
     return db
@@ -72,6 +72,8 @@ exports.showComments = function(id) {
             return data.rows;
         });
 };
+
+/// EXPORTS MORE BUTTON ///
 
 exports.getMoreImages = function(id) {
     return db
