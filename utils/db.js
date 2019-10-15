@@ -11,16 +11,19 @@ if (process.env.DATABASE_URL) {
 /// EXPORTS FILES ///
 
 exports.getImages = function() {
-    return db.query(`SELECT id, url, username, title, description
+    return db
+        .query(
+       `SELECT id, url, username, title, description
         FROM images
         ORDER BY id DESC
-        LIMIT 9`);
+        LIMIT 9`
+    );
 };
 
 exports.insertFile = function(title, username, description, url) {
     return db
         .query(
-            `INSERT INTO images (title, username, description, url)
+       `INSERT INTO images (title, username, description, url)
         VALUES ($1, $2, $3, $4)
         RETURNING * `,
             [title, username, description, url]
@@ -33,7 +36,7 @@ exports.insertFile = function(title, username, description, url) {
 exports.getSingleImage = function(id) {
     return db
         .query(
-            `SELECT *
+       `SELECT *
         FROM images
         WHERE id = $1`,
             [id]
@@ -48,12 +51,10 @@ exports.getSingleImage = function(id) {
 exports.addComments = function(comment, username, image_id) {
     return db
         .query(
-            `
-        INSERT INTO comments (comment, username, image_id)
+        `INSERT INTO comments (comment, username, image_id)
         VALUES ($1, $2, $3)
-        RETURNING *
-        `,
-            [comment, username, image_id]
+        RETURNING *`,
+         [comment, username, image_id]
         )
         .then(data => {
             return data.rows;
@@ -63,7 +64,7 @@ exports.addComments = function(comment, username, image_id) {
 exports.showComments = function(id) {
     return db
         .query(
-            `SELECT * FROM comments
+       `SELECT * FROM comments
         WHERE image_id = $1
         ORDER BY created_at DESC`,
             [id]
@@ -78,18 +79,17 @@ exports.showComments = function(id) {
 exports.getMoreImages = function(id) {
     return db
         .query(
-            `SELECT *, (
-                SELECT id
-                FROM images
-                ORDER BY id ASC
-                LIMIT 1
-            )
+            `SELECT *, 
+            (SELECT id 
+            FROM images
+            ORDER BY id ASC
+            LIMIT 1)
             AS "lowestId"
             FROM images
             WHERE id < $1
             ORDER BY id DESC
             LIMIT 18;`,
-            [id]
+                [id]
         )
         .then(data => {
             return data.rows;
