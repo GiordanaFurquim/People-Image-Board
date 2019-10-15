@@ -12,3 +12,10 @@
 
 ![comments-capture](https://user-images.githubusercontent.com/50359290/66848361-3e7b7080-ef75-11e9-99b5-8a2392f6bfd7.gif)
 
+# Stack 
+- JavaScript/Vue.js
+- Node.js
+- HTML
+- CSS 
+
+
