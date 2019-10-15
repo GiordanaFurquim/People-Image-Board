@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+    <title>P E O P L E .</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Indie+Flower|Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Anton|Overpass&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="main">
+
+<!-- VUE COMPONENT -->
+
+        <image-modal v-if='image' :imageid='image' @close='closeModalOnParent'></image-modal>
+
+<!-- HEADER -->
+        <header>
+                <h1 class="title">P E O P L E <span style="color: #ff0000">.</span></h1>
+        </header>
+
+<!-- UPLOADING AREA -->
+
+    <div class="uploader-container">
+        <form class="uploading-area" action="index.html" method="post">
+            <label for="title"><span style="color:white">.</span> Title</label>
+            <input class="title-field" v-model='title' type="text" name="title">
+            <label for="username"><span style="color:white">.</span> Username</label>
+            <input class="username-field" v-model='username' type="text" name="username">
+            <label for="description"><span style="color:white">.</span> Write a caption...</label>
+            <input class="description-field" v-model='description' type="text" name="description">
+            <input class="choose-file-button" @change="handleChange" type="file" name="file" accept="image/*">
+            <button class="share-button" @click='uploadImageButton'>share</button>
+        </form>
+    </div>
+
+<!-- BOARD -->
+
+
+        <div class="images-container">
+            <div class="card" v-for="image in images" :key="image.url">
+                <a :href="'#' + image.id">
+                <img :src="image.url" class="image">
+                 </a>
+                <h3>{{image.title}}</h3>
+                <p>{{image.description}}</p>
+            </div>
+        </div>
+        <div class="button-container">
+        <img  src="down-chevron.png" alt="SHOW MORE" class="show-more-button" @click='showMore' v-if='showMore'/>
+    </div>
+    </div>
+
+
+<!-- MODAL -->
+
+     <script id="image-modal-template" type="text/x-template">
+
+        <div class="modal-container">
+            <div class="modal">
+                <p @click='closeModal()' class="x-button">x</p>
+                <div class="modal-image">
+                    <img :src="image.url" class="image-modal">
+                </div>
+                <div class="title-description">
+                <h3>{{image.title}}</h3>
+                <p>{{image.description}}</p>
+            </div>
+
+<!-- SINGLE COMMENTS -->
+
+            <div  class="all-commments">
+                <div class="comment-wrapper" v-for="comment in comments">
+                    <div class="comment">
+                        <h3>{{comment.username}}:</h3>
+                        <h4>{{comment.comment}}</h4>
+                        <p>Comment created on {{comment.created_at}}</p>
+                    </div>
+                </div>
+            </div>
+
+<!-- COMMENTS SECTION -->
+
+                <div class="comment-inputs">
+                    <form>
+                    <label for="username"><span style="color:white">.</span> Username</label>
+                    <input class="username-on-comment" v-model='commentsData.username' type="text" name="username">
+                    <label for="comment"><span style="color:white">.</span> Add a comment</label>
+                    <input class="comments-uploader" v-model='commentsData.comment' type="text" name="comment">
+                       <button @click='uploadCommentsButton'>Submit</button>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </script>
+
+<!-- FOOTER  -->
+
+<footer>
+    <p>Project by Giordana Furquim</p>
+    <p> © SPICED Academy, 2019.</p>
+</footer>
+
+<!-- SCRIPT TAGS -->
+
+    <script src="/js/vue.js"></script>
+    <script src="/js/axios.min.js"></script>
+    <script src="/js/script.js"></script>
+</body>
+</html>

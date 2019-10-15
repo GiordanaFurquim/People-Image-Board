@@ -1,0 +1,308 @@
+* {
+    overflow-x: hidden;
+    margin: 0;
+}
+
+body {
+    background-color: black;
+}
+
+header {
+    position: fixed;
+    background-color: black;
+    z-index: 2;
+    width: 100%;
+    height: 30%;
+
+}
+
+.title {
+    font-family: 'Anton', sans-serif;
+    font-size: 70px;
+    padding: 20px;
+    color: white;
+}
+
+label {
+    font-family: 'Anton', sans-serif;
+    font-size: 15px;
+    color: #ff0000;
+}
+
+
+.uploading-area {
+    padding: 30px;
+    margin: 160px 0 40px 0;
+    background-color: black;
+}
+
+.title-field {
+    width: 30%;
+    padding: 20px;
+    margin: 10px 0 10px 0;
+    border-radius: 3px;
+    border-color: black;
+}
+
+.description-field {
+    width: 30%;
+    height: 200px;
+    width: 33.5%;
+    margin: 10px 0 10px 0;
+    border-radius: 3px;
+    border-color: black;
+}
+
+.username-field {
+    width: 30%;
+    padding: 20px;
+    margin: 10px 0 10px 0;
+    border-radius: 3px;
+    border-color: black;
+}
+
+.uploading-area input {
+    display: block;
+}
+
+.choose-file-button::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.choose-file-button {
+  font-family: 'Anton', sans-serif;
+  font-size: 15px;
+  padding: 10px;
+  background-color: white;
+  border-color: black;
+  border-radius: 3px;
+  -webkit-user-select: none;
+  cursor: pointer;
+  color: #ff0000;
+  margin-top: 30px;
+}
+
+.choose-file-button:hover::before {
+  border-color: 1px solid black;
+}
+
+.share-button {
+    font-family: 'Anton', sans-serif;
+    font-size: 15px;
+    border-radius: 3px;
+    width: 10%;
+    border-color: black;
+    background-color: white;
+    cursor: pointer;
+    color: #ff0000;
+    margin-top: 20px;
+}
+
+.share-button:hover {
+    border: 5px solid black;
+}
+
+
+.image {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.card {
+    max-width: 300px;
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.images-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-around;
+}
+
+.card h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 30px;
+    color: #ff0000;
+}
+
+.card p {
+    font-family: 'Overpass', sans-serif;
+    font-size: 1rem;
+    color: white;
+    text-align: justify;
+    margin-top: 10px;
+}
+
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 3;
+}
+
+.modal-container.on {
+    visibility: visible;
+}
+
+
+.x-button {
+    font-size: 40px;
+    font-weight: bold;
+    margin-right: 75%;
+    color: white;
+    cursor: pointer;
+}
+
+.modal-container img {
+    max-width: 800px;
+    max-height: 600px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+
+.title-description {
+    width: 700px;
+    margin-top: 30px;
+
+}
+
+.title-description h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 40px;
+    color: #ff0000;
+}
+
+.title-description p  {
+    font-family: 'Overpass', sans-serif;
+    font-size: 20px;
+    text-align: justify;
+    color: white;
+}
+
+.comment-inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    height: 400px;
+    overflow-y: hidden;
+    padding: 50px;
+}
+
+.comment-inputs form {
+    margin-top: 90px;
+}
+
+.comment-inputs input{
+    display: block;
+}
+
+.comments-uploader {
+    width: 600px;
+    height: 200px;
+    margin: 10px 0 10px 0;
+    border-radius: 3px;
+    border-color: black;
+}
+
+.username-on-comment {
+    width: 555px;
+    padding: 20px;
+    margin: 10px 0 10px 0;
+    border-radius: 3px;
+    border-color: black;
+}
+
+.comment-inputs button {
+    font-family: 'Anton', sans-serif;
+    font-size: 15px;
+    border-radius: 3px;
+    width: 15%;
+    border-color: black;
+    background-color: white;
+    cursor: pointer;
+    color: #ff0000;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    padding: 15px;
+}
+
+.all-comments {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comment-wrapper {
+    background-color: white;
+    margin-top: 5%;
+    width: 700px;
+    border-radius: 3px;
+}
+
+.comment {
+    padding: 20px;
+}
+
+.comment h3 {
+    font-family: 'Overpass', sans-serif;
+    font-size: 15px;
+    color: #ff0000;
+
+}
+
+.comment h4 {
+    font-family: 'Overpass', sans-serif;
+}
+
+.comment p {
+    font-family: 'Overpass', sans-serif;
+    font-size: 12px;
+    color:lightgray;
+    padding: 10px;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 0 20px 0;
+}
+
+.show-more-button {
+    border-radius: 100%;
+    background-color: white;
+    cursor: pointer;
+    border: white solid 4px;
+}
+
+.show-more-button:hover {
+    border: solid 1px;
+}
+
+footer {
+    background-color: black;
+    padding: 10px;
+}
+
+footer p {
+    font-family: 'Overpass', sans-serif;
+    font-size: 12px;
+    color: white;
+    margin-left: 10px;
+}
