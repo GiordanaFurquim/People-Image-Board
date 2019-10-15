@@ -4,7 +4,7 @@ const db = require("./utils/db");
 const s3 = require("./s3");
 const config = require("./config");
 
-///  file upload boilerplate////
+/// file upload boilerplate ///
 
 const multer = require("multer");
 const uidSafe = require("uid-safe");
@@ -28,12 +28,13 @@ const uploader = multer({
         fileSize: 2097152
     }
 });
-///////file upload boilerplate//////
+
+/// file upload boilerplate ///
 
 app.use(express.static("public"));
 app.use(express.json());
 
-///// get images/////
+/// get images ///
 
 app.get("/images", (req, res) => {
     db.getImages().then(data => {
@@ -42,7 +43,7 @@ app.get("/images", (req, res) => {
     });
 });
 
-///// image modal /////
+/// image modal ///
 
 app.get("/image/:id", (req, res) => {
     db.getSingleImage(req.params.id)
@@ -55,7 +56,7 @@ app.get("/image/:id", (req, res) => {
         });
 });
 
-//// get more images ///
+/// get more images ///
 
 app.get("/more/:lowestId", (req, res) => {
     db.getMoreImages(req.params.lowestId)
@@ -68,7 +69,8 @@ app.get("/more/:lowestId", (req, res) => {
         });
 });
 
-/////  comments /////
+///  comments ///
+
 app.post("/comments/:id", (req, res) => {
     console.log("ADD COMMENTS REQ.BODY:", req.body);
     db.addComments(req.body.comment, req.body.username, req.params.id)
@@ -88,7 +90,7 @@ app.get("/comments/:id", (req, res) => {
     });
 });
 
-/////// POST REQUESTS///////
+/// uploader ///
 
 app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
     const { filename } = req.file;
@@ -112,6 +114,6 @@ app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
     }
 });
 
-/////// SERVER ///////
+/// server ///
 
 app.listen(8080, () => console.log("peace to all wombats!"));
