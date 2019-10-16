@@ -15,7 +15,7 @@
 # Stack 
 - JavaScript/Vue.js
 - Node.js
-- HTML
-- CSS 
+- HTML5
+- CSS3
 
 
